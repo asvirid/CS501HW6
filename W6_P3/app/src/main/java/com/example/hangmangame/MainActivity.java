@@ -280,33 +280,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        int orientation = getResources().getConfiguration().orientation;
-//        OrientationEventListener orientationEventListener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_UI) {
-//            @Override
-//            public void onOrientationChanged(int orientation) {
-//                if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//                    if (game) {
-//                        hint = (Button) findViewById(R.id.hint);
-//                        hint.setVisibility(View.VISIBLE);
-//                    }
-//                }
-//            }
-//        };
-//        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-//            hint.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    counthint++;
-//                    if (counthint < 2) {
-//                        Toast.makeText(getApplicationContext(), category.toString(), Toast.LENGTH_LONG).show();
-//                    } else if (counthint == 2) {
-//                        countWrong++;
-//                        hint.setVisibility(View.INVISIBLE);
-//                    }
-//                }
-//            });
-//        }
         hint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
