@@ -7,27 +7,35 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.sse.interfragmentcommratingbar.MainActivity">
+    tools:context="com.example.sse.interfragmentcommratingbar.MainActivity"
+    android:orientation = "vertical">
 
     <fragment
-        android:id="@+id/fragment2"
+        android:id="@+id/drawablef"
         android:name="com.example.sse.interfragmentcommratingbar.DrawableFragment"
         android:layout_width="wrap_content"
-        android:layout_height="318dp"
+        android:layout_height="505dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="43dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="-3dp"
         tools:layout="@layout/fragment_drawable" />
 
     <fragment
-        android:id="@+id/fragment"
-        android:name="com.example.sse.interfragmentcommratingbar.DrawableFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="318dp"
+        android:id="@+id/buttonf"
+        android:name="com.example.sse.interfragmentcommratingbar.ButtonFragment"
+        android:layout_width="302dp"
+        android:layout_height="68dp"
+        android:layout_above="@+id/drawablef"
         android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="397dp"
-        tools:layout="@layout/fragment_drawable" />
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="39dp"
+        android:layout_marginBottom="10dp"
+        tools:layout="@layout/fragment_button" />
+
+
 </RelativeLayout>
