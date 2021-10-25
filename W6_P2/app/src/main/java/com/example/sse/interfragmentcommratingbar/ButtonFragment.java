@@ -11,14 +11,12 @@ import android.widget.Button;
 public class ButtonFragment extends Fragment {
     private Button btnLeft;
     private Button btnRight;
-    private int currDrawableIndex = 0;
+    private int currDrawableIndex;
     int totImgs;
 
 
-
-
-    public interface ButtonFragmentListener {            //this is just an interface definition.
-        public void changePicture(int i);; //it could live in its own file.  placed here for convenience.
+    public interface ButtonFragmentListener {
+        public void changePicture(int i);
     }
 
     ButtonFragmentListener BFL;
@@ -28,8 +26,8 @@ public class ButtonFragment extends Fragment {
         BFL = (ButtonFragmentListener) context;
     }
 
-    public void setImageCount(int imgCount) {
-        totImgs = imgCount;
+    public void setTotalImgs(int count) {
+        totImgs = count;
     }
 
 
@@ -43,21 +41,26 @@ public class ButtonFragment extends Fragment {
         btnLeft = (Button) buttonview.findViewById(R.id.btnLeft);
 
         totImgs = 9;
+        currDrawableIndex =0;
+
         btnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View buttonview) {
-                if (currDrawableIndex == 0)
-                    currDrawableIndex = totImgs -1 ;
-                else
+                if (currDrawableIndex == 0) {
+                    currDrawableIndex = totImgs - 1;
+                    BFL.changePicture(currDrawableIndex);
+                }
+                else {
                     currDrawableIndex--;
+                    BFL.changePicture(currDrawableIndex);
+                }
 
-                BFL.changePicture(currDrawableIndex);
             }
         });
 
         btnRight.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View buttonview) {
                 if (currDrawableIndex == totImgs - 1)
                     currDrawableIndex = 0;
                 else

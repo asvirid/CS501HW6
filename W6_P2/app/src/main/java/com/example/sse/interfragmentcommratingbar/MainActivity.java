@@ -12,16 +12,18 @@ public class MainActivity extends Activity implements ButtonFragment.ButtonFragm
     }
 
     @Override
+    public void setTotalImgs(int count) {
+        ButtonFragment receivingFragment = (ButtonFragment)getFragmentManager().findFragmentById(R.id.buttonf);
+        receivingFragment.setTotalImgs(count);
+    }
+
+    @Override
     public void changePicture(int i) {
         DrawableFragment receivingFragment = (DrawableFragment)getFragmentManager().findFragmentById(R.id.drawablef);
         receivingFragment.changePicture(i);
     }
 
-    @Override
-    public void setImgCount(int count) {
-        ButtonFragment receivingFragment = (ButtonFragment)getFragmentManager().findFragmentById(R.id.buttonf);
-        receivingFragment.setImageCount(count);
-    }
+
 
 
 }
