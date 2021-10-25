@@ -12,7 +12,7 @@ public class ButtonFragment extends Fragment {
     private Button btnLeft;
     private Button btnRight;
     private int currDrawableIndex = 0;
-    int totImgs = 9;
+    int totImgs;
 
 
 
@@ -42,13 +42,15 @@ public class ButtonFragment extends Fragment {
         btnRight = (Button) buttonview.findViewById(R.id.btnRight);
         btnLeft = (Button) buttonview.findViewById(R.id.btnLeft);
 
+        totImgs = 9;
         btnLeft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View buttonview) {
                 if (currDrawableIndex == 0)
-                    currDrawableIndex = totImgs - 1;
+                    currDrawableIndex = totImgs -1 ;
                 else
                     currDrawableIndex--;
+
                 BFL.changePicture(currDrawableIndex);
             }
         });

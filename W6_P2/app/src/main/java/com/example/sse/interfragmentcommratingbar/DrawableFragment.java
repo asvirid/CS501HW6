@@ -24,11 +24,11 @@ public class DrawableFragment extends Fragment {
 
     ArrayList<Drawable> drawables;  //keeping track of our drawables
     private int currDrawableIndex;  //keeping track of which drawable is currently displayed.
-    private int totalImgs;
 
  //Boiler Plate Stuff.
     private ImageView imgRateMe;
     private RatingBar ratingBar;
+    float [] stars;
 
 
 
@@ -51,12 +51,11 @@ public class DrawableFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_drawable, container, false);  //comment this out, it would return the default view, without our setup/amendments.
         View drawableview = inflater.inflate(R.layout.fragment_drawable, container, false);   //MUST HAPPEN FIRST, otherwise components don't exist.
 
         imgRateMe = (ImageView) drawableview.findViewById(R.id.imgRateMe);
         ratingBar = (RatingBar) drawableview.findViewById(R.id.ratingBar);
-
+        stars = new float[7];
 
 
         currDrawableIndex = 0;  //ArrayList Index of Current Drawable.
@@ -65,7 +64,12 @@ public class DrawableFragment extends Fragment {
         changePicture(0);        //Sets the ImageView to the first drawable in the list.
 
 
-//setting up navigation call backs.  (Left and Right Buttons)
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+                stars[currDrawableIndex] = ratingBar.getRating();
+            }
+        });
 
 
         return drawableview;   //returns the view, with our must happen last, Why? A: ____________
@@ -75,7 +79,7 @@ public class DrawableFragment extends Fragment {
     public void changePicture(int i) {
       imgRateMe.setImageDrawable(drawables.get(i));  //note, this is the preferred way of changing images, don't worry about parent viewgroup size changes.
       currDrawableIndex = i;
-      //ratingBar.setRating(rating);
+      ratingBar.setRating(stars[i]);
     }
 
 //Quick and Dirty way to get drawable resources, we prefix with "animal_" to filter out just the ones we want to display.
@@ -95,6 +99,6 @@ public class DrawableFragment extends Fragment {
                 e.printStackTrace();
             }
         }
-        totalImgs = drawables.size();
+
     }
 }
