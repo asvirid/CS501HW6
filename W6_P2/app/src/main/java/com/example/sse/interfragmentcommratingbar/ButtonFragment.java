@@ -1,62 +1,72 @@
 package com.example.sse.interfragmentcommratingbar;
 
+import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ButtonFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ButtonFragment extends Fragment {
+    private Button btnLeft;
+    private Button btnRight;
+    private int currDrawableIndex = 0;
+    int totImgs = 9;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public ButtonFragment() {
-        // Required empty public constructor
+
+    public interface ButtonFragmentListener {            //this is just an interface definition.
+        public void changePicture(int i);; //it could live in its own file.  placed here for convenience.
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ButtonFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ButtonFragment newInstance(String param1, String param2) {
-        ButtonFragment fragment = new ButtonFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    ButtonFragmentListener BFL;
+
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        BFL = (ButtonFragmentListener) context;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void setImageCount(int imgCount) {
+        totImgs = imgCount;
     }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_button, container, false);
+        View buttonview = inflater.inflate(R.layout.fragment_button, container, false);
+        btnRight = (Button) buttonview.findViewById(R.id.btnRight);
+        btnLeft = (Button) buttonview.findViewById(R.id.btnLeft);
+
+        btnLeft.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View buttonview) {
+                if (currDrawableIndex == 0)
+                    currDrawableIndex = totImgs - 1;
+                else
+                    currDrawableIndex--;
+                BFL.changePicture(currDrawableIndex);
+            }
+        });
+
+        btnRight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currDrawableIndex == totImgs - 1)
+                    currDrawableIndex = 0;
+                else
+                    currDrawableIndex++;
+                BFL.changePicture(currDrawableIndex);
+            }
+        });
+
+        return buttonview;
     }
+
 }
+
+

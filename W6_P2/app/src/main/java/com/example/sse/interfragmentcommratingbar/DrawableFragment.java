@@ -2,6 +2,7 @@ package com.example.sse.interfragmentcommratingbar;
 
 
 import android.app.Fragment;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -22,15 +24,27 @@ public class DrawableFragment extends Fragment {
 
     ArrayList<Drawable> drawables;  //keeping track of our drawables
     private int currDrawableIndex;  //keeping track of which drawable is currently displayed.
+    private int totalImgs;
 
  //Boiler Plate Stuff.
     private ImageView imgRateMe;
-    private Button btnLeft;
-    private Button btnRight;
+    private RatingBar ratingBar;
 
-//    public DrawableFragment() {
+
+
+    public DrawableFragment() {
 //        // Required empty public constructor
-//    }
+    }
+
+    public interface DrawableFragmentListener {
+        public void setImgCount(int totalImgs);
+    }
+
+    DrawableFragmentListener DFL;
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        DFL = (DrawableFragment.DrawableFragmentListener) context;
+    }
 
 
     @Override
@@ -38,48 +52,30 @@ public class DrawableFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_drawable, container, false);  //comment this out, it would return the default view, without our setup/amendments.
-        View v = inflater.inflate(R.layout.fragment_drawable, container, false);   //MUST HAPPEN FIRST, otherwise components don't exist.
+        View drawableview = inflater.inflate(R.layout.fragment_drawable, container, false);   //MUST HAPPEN FIRST, otherwise components don't exist.
 
-        imgRateMe = (ImageView) v.findViewById(R.id.imgRateMe);
-        btnRight = (Button) v.findViewById(R.id.btnRight);
-        btnLeft = (Button) v.findViewById(R.id.btnLeft);
+        imgRateMe = (ImageView) drawableview.findViewById(R.id.imgRateMe);
+        ratingBar = (RatingBar) drawableview.findViewById(R.id.ratingBar);
+
 
 
         currDrawableIndex = 0;  //ArrayList Index of Current Drawable.
         getDrawables();         //Retrieves the drawables we want, ie, prefixed with "animal_"
         imgRateMe.setImageDrawable(null);  //Clearing out the default image from design time.
-        changePicture();        //Sets the ImageView to the first drawable in the list.
+        changePicture(0);        //Sets the ImageView to the first drawable in the list.
 
 
 //setting up navigation call backs.  (Left and Right Buttons)
-        btnLeft.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currDrawableIndex == 0)
-                    currDrawableIndex = drawables.size() - 1;
-                else
-                    currDrawableIndex--;
-                changePicture();
-            }
-        });
 
-        btnRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (currDrawableIndex == drawables.size() - 1)
-                    currDrawableIndex = 0;
-                else
-                    currDrawableIndex++;
-                changePicture();
-            }
-        });
 
-        return v;   //returns the view, with our must happen last, Why? A: ____________
+        return drawableview;   //returns the view, with our must happen last, Why? A: ____________
     }
 
 //Routine to change the picture in the image view dynamically.
-    public void changePicture() {
-      imgRateMe.setImageDrawable(drawables.get(currDrawableIndex));  //note, this is the preferred way of changing images, don't worry about parent viewgroup size changes.
+    public void changePicture(int i) {
+      imgRateMe.setImageDrawable(drawables.get(i));  //note, this is the preferred way of changing images, don't worry about parent viewgroup size changes.
+      currDrawableIndex = i;
+      //ratingBar.setRating(rating);
     }
 
 //Quick and Dirty way to get drawable resources, we prefix with "animal_" to filter out just the ones we want to display.
@@ -99,5 +95,6 @@ public class DrawableFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+        totalImgs = drawables.size();
     }
 }
