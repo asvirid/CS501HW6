@@ -18,3 +18,6 @@ public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle s
 	View v = inflater.inflate(R.layout.my_fragment, container, attachroot: false);
 
 }
+
+9.15
+	MyActivity activity = ( MyActivity ) getActivity( );
