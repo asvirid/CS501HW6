@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Letters.LettersListener {
 
     /* 23 animals lol */
     static final String[] animals = {"bear","bee","bird","cat","crab","dolphin","cow","duck","snake","frog","giraffe","horse","lion","panda","pig","tiger","turtle","whale","zebra","chicken","dog","elephant","fox"};
@@ -32,14 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     boolean game = false;
 
-    private ImageView hangmanFrame;
-    private ImageView hangmanHead;
-    private ImageView hangmanTorso;
-    private ImageView hangmanLeftArm;
-    private ImageView hangmanRightArm;
-    private ImageView hangmanLeftLeg;
-    private ImageView hangmanRightLeg;
-    private ImageView[] hangmanBody;
     int countWrong = 0; // number wrong
     char[] randomWordArray = {}; // word selected put into char array
     String wordSelectedUnderscores = ""; // displayed string of underscores
@@ -129,16 +121,16 @@ public class MainActivity extends AppCompatActivity {
 
         int savedCountWrong = savedInstanceState.getInt("countWrong");
         countWrong = savedCountWrong;
-        hangmanHead = (ImageView) findViewById(R.id.hangmanHead);
-        hangmanTorso = (ImageView) findViewById(R.id.hangmanTorso);
-        hangmanLeftArm = (ImageView) findViewById(R.id.hangmanLeftArm);
-        hangmanRightArm = (ImageView) findViewById(R.id.hangmanRightArm);
-        hangmanLeftLeg = (ImageView) findViewById(R.id.hangmanLeftLeg);
-        hangmanRightLeg = (ImageView) findViewById(R.id.hangmanRightLeg);
-        hangmanBody = new ImageView[]{hangmanLeftLeg, hangmanRightLeg, hangmanLeftArm, hangmanRightArm, hangmanTorso, hangmanHead};
-        for (int iter = 0; iter < countWrong; iter++) {
-            hangmanBody[iter].setVisibility(View.VISIBLE);
-        }
+//        hangmanHead = (ImageView) findViewById(R.id.hangmanHead);
+//        hangmanTorso = (ImageView) findViewById(R.id.hangmanTorso);
+//        hangmanLeftArm = (ImageView) findViewById(R.id.hangmanLeftArm);
+//        hangmanRightArm = (ImageView) findViewById(R.id.hangmanRightArm);
+//        hangmanLeftLeg = (ImageView) findViewById(R.id.hangmanLeftLeg);
+//        hangmanRightLeg = (ImageView) findViewById(R.id.hangmanRightLeg);
+//        hangmanBody = new ImageView[]{hangmanLeftLeg, hangmanRightLeg, hangmanLeftArm, hangmanRightArm, hangmanTorso, hangmanHead};
+//        for (int iter = 0; iter < countWrong; iter++) {
+//            hangmanBody[iter].setVisibility(View.VISIBLE);
+//        }
 
         char[] savedRandomWordArray = savedInstanceState.getCharArray("randomWordArray");
         randomWordArray = savedRandomWordArray;
@@ -162,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
         game = savedGame;
 
         if (game) {
-            hangmanFrame.setVisibility(View.VISIBLE);
+//            hangmanFrame.setVisibility(View.VISIBLE);
             keyboard.setVisibility(View.VISIBLE);
 
             int savedHintStatus = savedInstanceState.getInt("hintStatus");
@@ -183,48 +175,48 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        hangmanFrame = (ImageView) findViewById(R.id.hangmanFrame);
-        hangmanHead = (ImageView) findViewById(R.id.hangmanHead);
-        hangmanTorso = (ImageView) findViewById(R.id.hangmanTorso);
-        hangmanLeftArm = (ImageView) findViewById(R.id.hangmanLeftArm);
-        hangmanRightArm = (ImageView) findViewById(R.id.hangmanRightArm);
-        hangmanLeftLeg = (ImageView) findViewById(R.id.hangmanLeftLeg);
-        hangmanRightLeg = (ImageView) findViewById(R.id.hangmanRightLeg);
+//        hangmanFrame = (ImageView) findViewById(R.id.hangmanFrame);
+//        hangmanHead = (ImageView) findViewById(R.id.hangmanHead);
+//        hangmanTorso = (ImageView) findViewById(R.id.hangmanTorso);
+//        hangmanLeftArm = (ImageView) findViewById(R.id.hangmanLeftArm);
+//        hangmanRightArm = (ImageView) findViewById(R.id.hangmanRightArm);
+//        hangmanLeftLeg = (ImageView) findViewById(R.id.hangmanLeftLeg);
+//        hangmanRightLeg = (ImageView) findViewById(R.id.hangmanRightLeg);
         wordSelected = (TextView) findViewById(R.id.wordSelected);
         btnStartGame = (Button) findViewById(R.id.btnStartGame);
         hint = (Button) findViewById(R.id.hint);
 
-        keyboard = (TableLayout) findViewById(R.id.keyboard);
-        qwertyuiop = (TableRow) findViewById(R.id.qwertyuiop);
-        asdfghjkl = (TableRow) findViewById(R.id.asdfghjkl);
-        zxcvbnm = (TableRow) findViewById(R.id.zxcvbnm);
-
-        btnQ = (Button) findViewById(R.id.btnQ);
-        btnW = (Button) findViewById(R.id.btnW);
-        btnE = (Button) findViewById(R.id.btnE);
-        btnR = (Button) findViewById(R.id.btnR);
-        btnT = (Button) findViewById(R.id.btnT);
-        btnY = (Button) findViewById(R.id.btnY);
-        btnU = (Button) findViewById(R.id.btnU);
-        btnI = (Button) findViewById(R.id.btnI);
-        btnO = (Button) findViewById(R.id.btnO);
-        btnP = (Button) findViewById(R.id.btnP);
-        btnA = (Button) findViewById(R.id.btnA);
-        btnS = (Button) findViewById(R.id.btnS);
-        btnD = (Button) findViewById(R.id.btnD);
-        btnF = (Button) findViewById(R.id.btnF);
-        btnG = (Button) findViewById(R.id.btnG);
-        btnH = (Button) findViewById(R.id.btnH);
-        btnJ = (Button) findViewById(R.id.btnJ);
-        btnK = (Button) findViewById(R.id.btnK);
-        btnL = (Button) findViewById(R.id.btnL);
-        btnZ = (Button) findViewById(R.id.btnZ);
-        btnX = (Button) findViewById(R.id.btnX);
-        btnC = (Button) findViewById(R.id.btnC);
-        btnV = (Button) findViewById(R.id.btnV);
-        btnB = (Button) findViewById(R.id.btnB);
-        btnN = (Button) findViewById(R.id.btnN);
-        btnM = (Button) findViewById(R.id.btnM);
+//        keyboard = (TableLayout) findViewById(R.id.keyboard);
+//        qwertyuiop = (TableRow) findViewById(R.id.qwertyuiop);
+//        asdfghjkl = (TableRow) findViewById(R.id.asdfghjkl);
+//        zxcvbnm = (TableRow) findViewById(R.id.zxcvbnm);
+//
+//        btnQ = (Button) findViewById(R.id.btnQ);
+//        btnW = (Button) findViewById(R.id.btnW);
+//        btnE = (Button) findViewById(R.id.btnE);
+//        btnR = (Button) findViewById(R.id.btnR);
+//        btnT = (Button) findViewById(R.id.btnT);
+//        btnY = (Button) findViewById(R.id.btnY);
+//        btnU = (Button) findViewById(R.id.btnU);
+//        btnI = (Button) findViewById(R.id.btnI);
+//        btnO = (Button) findViewById(R.id.btnO);
+//        btnP = (Button) findViewById(R.id.btnP);
+//        btnA = (Button) findViewById(R.id.btnA);
+//        btnS = (Button) findViewById(R.id.btnS);
+//        btnD = (Button) findViewById(R.id.btnD);
+//        btnF = (Button) findViewById(R.id.btnF);
+//        btnG = (Button) findViewById(R.id.btnG);
+//        btnH = (Button) findViewById(R.id.btnH);
+//        btnJ = (Button) findViewById(R.id.btnJ);
+//        btnK = (Button) findViewById(R.id.btnK);
+//        btnL = (Button) findViewById(R.id.btnL);
+//        btnZ = (Button) findViewById(R.id.btnZ);
+//        btnX = (Button) findViewById(R.id.btnX);
+//        btnC = (Button) findViewById(R.id.btnC);
+//        btnV = (Button) findViewById(R.id.btnV);
+//        btnB = (Button) findViewById(R.id.btnB);
+//        btnN = (Button) findViewById(R.id.btnN);
+//        btnM = (Button) findViewById(R.id.btnM);
 
         btnStartGame.setText("Start Game");
         /* START GAME */
@@ -232,29 +224,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 game = true;
-                hangmanFrame.setVisibility(View.VISIBLE);
+//                hangmanFrame.setVisibility(View.VISIBLE);
 
-                int orientation = getResources().getConfiguration().orientation;
-                if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                    // In landscape
-                    hint.setVisibility(View.VISIBLE);
-                } else {
-                    // In portrait
-                    hint.setVisibility(View.INVISIBLE);
-                }
+                /* everything is in landscape for this */
+//                int orientation = getResources().getConfiguration().orientation;
+//                if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+//                    // In landscape
+//                    hint.setVisibility(View.VISIBLE);
+//                } else {
+//                    // In portrait
+//                    hint.setVisibility(View.INVISIBLE);
+//                }
 
                 // for restarting
                 countWrong = 0;
                 wordSelectedUnderscores = "";
                 wordSelectedUnderscoresArr.clear();
-                hangmanBody = new ImageView[]{hangmanLeftLeg, hangmanRightLeg, hangmanLeftArm, hangmanRightArm, hangmanTorso, hangmanHead};
-                for (int iter = 0; iter < hangmanBody.length; iter++) {
-                    hangmanBody[iter].setVisibility(View.INVISIBLE);
-                }
-                keyboardButtons = new Button[]{btnQ, btnW, btnE, btnR, btnT, btnY, btnU, btnI, btnO, btnP, btnA, btnS, btnD, btnF, btnG, btnH, btnJ, btnK, btnL, btnZ, btnX, btnC, btnV, btnB, btnN, btnM};
-                for (int iter = 0; iter < keyboardButtons.length; iter++) {
-                    keyboardButtons[iter].setVisibility(View.VISIBLE);
-                }
 
                 // randomly selects category
                 int randomArrChooser = new Random().nextInt(allWords.length);
@@ -266,6 +251,21 @@ public class MainActivity extends AppCompatActivity {
                 // turning word into array of chars
                 randomWordArray = randomKeySelected.toCharArray();
                 System.out.println(randomWordArray);
+
+                // TO DO: send word to gallows.java
+                /**
+                 * logic
+                 * 1. start game
+                 * 2. word selected in main activity
+                 * 3. word string builder sent to gallows.java to create UI and underscores
+                 * 4. keyboard turns on
+                 * 5. keyboard button click
+                 * 5a. letters.java interface to activity to gallows.java
+                 * 5b. disable button after click
+                 * 6. gallows.java checks if letter in word and update
+                 * 7. hint button separate
+                 */
+
                 // building the underscores
                 for (int iter = 0; iter < randomWordArray.length; iter++) {
                     wordSelectedUnderscores += "_";
@@ -300,273 +300,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnQ.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('q');
-                btnQ.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnQNum] = 4;
-            }
-        });
-        btnW.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('w');
-                btnW.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnWNum] = 4;
-            }
-        });
-        btnE.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('e');
-                btnE.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnENum] = 4;
-            }
-        });
-        btnR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('r');
-                btnR.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnRNum] = 4;
-            }
-        });
-        btnT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('t');
-                btnT.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnTNum] = 4;
-            }
-        });
-        btnY.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('y');
-                btnY.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnYNum] = 4;
-            }
-        });
-        btnU.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('u');
-                btnU.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnUNum] = 4;
-            }
-        });
-        btnI.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('i');
-                btnI.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnINum] = 4;
-            }
-        });
-        btnO.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('o');
-                btnO.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnONum] = 4;
-            }
-        });
-        btnP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('p');
-                btnP.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnPNum] = 4;
-            }
-        });
-        btnA.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('a');
-                btnA.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnANum] = 4;
-            }
-        });
-        btnS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('s');
-                btnS.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnSNum] = 4;
-            }
-        });
-        btnD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('d');
-                btnD.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnDNum] = 4;
-            }
-        });
-        btnF.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('f');
-                btnF.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnFNum] = 4;
-            }
-        });
-        btnG.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('g');
-                btnG.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnGNum] = 4;
-            }
-        });
-        btnH.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('h');
-                btnH.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnHNum] = 4;
-            }
-        });
-        btnJ.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('j');
-                btnJ.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnJNum] = 4;
-            }
-        });
-        btnK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('k');
-                btnK.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnKNum] = 4;
-            }
-        });
-        btnL.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('l');
-                btnL.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnLNum] = 4;
-            }
-        });
-        btnZ.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('z');
-                btnZ.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnZNum] = 4;
-            }
-        });
-        btnX.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('x');
-                btnX.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnXNum] = 4;
-            }
-        });
-        btnC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('c');
-                btnC.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnCNum] = 4;
-            }
-        });
-        btnV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('v');
-                btnV.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnVNum] = 4;
-            }
-        });
-        btnB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('b');
-                btnB.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnBNum] = 4;
-            }
-        });
-        btnN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('n');
-                btnN.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnNNum] = 4;
-            }
-        });
-        btnM.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                letterChecker('m');
-                btnM.setVisibility(View.INVISIBLE);
-                keyboardButtonsUsed[btnMNum] = 4;
-            }
-        });
+
         counthint = 0;
     }
 
-    /* takes button onclick to update game counters and UI */
-    private void letterChecker(char fromButton) {
-        // linear search to check if input letter is in the word
-        boolean check = false;
-        for (char c : randomWordArray) {
-            if (c == fromButton) {
-                check = true;
-            }
-        }
-        List<Integer> indexList = new ArrayList<Integer>();
-
-        if (!check) {
-            // negative value means not in the word -> wrong -> set next body part visible
-            hangmanBody[countWrong].setVisibility(View.VISIBLE);
-            countWrong++;
-
-            // 6 wrongs = end game -> Toast & turn off keyboard
-            if (countWrong == hangmanBody.length) {
-                keyboard.setVisibility(View.INVISIBLE);
-                Toast.makeText(getApplicationContext(), "OH NO! You killed Hangman! Game Over. Try again :)", Toast.LENGTH_LONG).show();
-            }
-
-        } else {
-            // else user got it right -> update underscore(s)
-
-            // getting the array indexes of letter instance in word
-            for (int iter = 0; iter < randomWordArray.length; iter++) {
-                if (randomWordArray[iter] == fromButton) {
-                    indexList.add(iter);
-                }
-            }
-
-            // updating the array of underscores
-            for (int iter = 0; iter < indexList.size(); iter++) {
-                wordSelectedUnderscoresArr.set(indexList.get(iter), fromButton);
-            }
-            StringBuilder sb = new StringBuilder();
-            for (Character ch : wordSelectedUnderscoresArr) {
-                sb.append(ch);
-            }
-            wordSelected.setText(sb.toString());
-
-            // whole word completed
-            boolean contains = false;
-            for (char c : wordSelectedUnderscoresArr) {
-                if (c == '_') {
-                    contains = true;
-                    break;
-                }
-            }
-            System.out.println(contains);
-            if (contains == false) {
-                keyboard.setVisibility(View.INVISIBLE);
-                Toast.makeText(getApplicationContext(), "CONGRATS! You won! Play again :)", Toast.LENGTH_LONG).show();
-            }
-        }
+    @Override
+    public char sendChar(char letter) {
+        
     }
 
     /*
