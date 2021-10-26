@@ -10,7 +10,9 @@ Multiple Choice
 8. tag or id
 9. an Interface 
 
-
+9.10
+	FragmentManager fragmentManager = getSupportFragmentManager();
+	
 9.14
 public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
 	View v = inflater.inflate(R.layout.my_fragment, container, attachroot: false);
