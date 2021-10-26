@@ -1,98 +1,25 @@
-<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    xmlns:tools="http://schemas.android.com/tools"-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    android:background="@drawable/squareburger"-->
-<!--    android:orientation="vertical"-->
-<!--    tools:context=".BottomFragment">-->
-
-<!--    &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;-->
-
-<!--&lt;!&ndash;    <TextView&ndash;&gt;-->
-<!--&lt;!&ndash;        android:id="@+id/txtFunnyMessage"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_width="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_height="wrap_content"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_alignParentTop="true"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_centerHorizontal="true"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:layout_marginTop="23dp"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:hint="&lt;Your other message here.>"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textAppearance="?android:attr/textAppearanceLarge"&ndash;&gt;-->
-<!--&lt;!&ndash;        android:textColor="#fff000" />&ndash;&gt;-->
-
-<!--    <TextView-->
-<!--        android:id="@+id/txtFunnyMessage2"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:autoText="true"-->
-<!--        android:hint="&lt;your other message here.>"-->
-<!--        android:text="Your message here"-->
-<!--        android:textAppearance="?android:attr/textAppearanceLarge"-->
-<!--        android:textColor="#ffffff" />-->
-<!--</RelativeLayout>-->
-
-<!--newlayout-->
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-tools:context="com.example.sse.interfragmentcommratingbar.DrawableFragment">
-
-<!-- TODO: Update blank fragment layout -->
-
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:orientation="horizontal">
-
-<!--    <Button-->
-<!--        android:id="@+id/btn"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_gravity="top"-->
-<!--        android:layout_margin="4dp"-->
-<!--        android:layout_weight="1"-->
-<!--        android:elegantTextHeight="false"-->
-<!--        android:elevation="2dp"-->
-<!--        android:text="&lt;&lt;&lt; Left" />-->
-
-</LinearLayout>
-
-<LinearLayout
-    android:id="@+id/LLMiddle"
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="3"
-    android:orientation="horizontal">
+    android:layout_height="match_parent"
+    tools:context=".BottomFragment">
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:padding="5dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/apple" />
+        android:layout_width="match_parent"
+        android:layout_height="291dp"
+        android:src="@drawable/food_apple" />
 
     <TextView
-        android:id="@+id/txtFunnyMessage2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:autoText="true"
-        android:hint="&lt;your other message here.>"
-        android:text="Your message here"
+        android:id="@+id/foodMessage"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:elevation="10dp"
+        android:visibility="visible"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#ffffff" />
+        android:textColor="#090909" />
 
-</LinearLayout>
-
-
-</LinearLayout>
+</FrameLayout>
 

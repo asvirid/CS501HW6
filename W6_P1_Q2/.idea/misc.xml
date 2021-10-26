@@ -10,9 +10,10 @@
         <entry key="app/src/main/res/drawable/ic_accessibility_24dp.xml" value="0.321875" />
         <entry key="app/src/main/res/drawable/ic_ring_volume_24dp.xml" value="0.321875" />
         <entry key="app/src/main/res/layout/activity_listview.xml" value="0.23097826086956522" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/fragment_bottom.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_control.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_bottom.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_control.xml" value="0.25" />
+        <entry key="app/src/main/res/menu/mainmenu.xml" value="0.4060743831880134" />
       </map>
     </option>
   </component>
@@ -62,7 +63,7 @@
       </value>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
