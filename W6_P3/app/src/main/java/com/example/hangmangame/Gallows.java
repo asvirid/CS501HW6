@@ -13,20 +13,34 @@ public class Gallows extends Fragment {
 
     View view;
 
+    private ImageView hangmanFrame;
+    private ImageView hangmanHead;
+    private ImageView hangmanTorso;
+    private ImageView hangmanLeftArm;
+    private ImageView hangmanRightArm;
+    private ImageView hangmanLeftLeg;
+    private ImageView hangmanRightLeg;
+    private ImageView[] hangmanBody;
+
+    public Gallows() {
+        // required empty public constructor
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.fragment_gallows, container, false);
 
-        ImageView hangmanFrame = (ImageView) getView().findViewById(R.id.hangmanFrame);
-        ImageView hangmanHead = (ImageView) getView().findViewById(R.id.hangmanHead);
-        ImageView hangmanTorso = (ImageView) getView().findViewById(R.id.hangmanTorso);
-        ImageView hangmanLeftArm = (ImageView) getView().findViewById(R.id.hangmanLeftArm);
-        ImageView hangmanRightArm = (ImageView) getView().findViewById(R.id.hangmanRightArm);
-        ImageView hangmanLeftLeg = (ImageView) getView().findViewById(R.id.hangmanLeftLeg);
-        ImageView hangmanRightLeg = (ImageView) getView().findViewById(R.id.hangmanRightLeg);
+        hangmanFrame = (ImageView) getView().findViewById(R.id.hangmanFrame);
+        hangmanHead = (ImageView) getView().findViewById(R.id.hangmanHead);
+        hangmanTorso = (ImageView) getView().findViewById(R.id.hangmanTorso);
+        hangmanLeftArm = (ImageView) getView().findViewById(R.id.hangmanLeftArm);
+        hangmanRightArm = (ImageView) getView().findViewById(R.id.hangmanRightArm);
+        hangmanLeftLeg = (ImageView) getView().findViewById(R.id.hangmanLeftLeg);
+        hangmanRightLeg = (ImageView) getView().findViewById(R.id.hangmanRightLeg);
 
+        hangmanBody = new ImageView[]{hangmanLeftLeg, hangmanRightLeg, hangmanLeftArm, hangmanRightArm, hangmanTorso, hangmanHead};
 
 
         // Inflate the layout for this fragment
