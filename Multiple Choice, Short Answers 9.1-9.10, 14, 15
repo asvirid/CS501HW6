@@ -1,0 +1,23 @@
+Multiple Choice
+
+1. 11
+2. Object
+3. 0 or more
+4. onRestart
+5.  getActivity
+6. Fragment Manager
+7. add
+8. tag or id
+9. an Interface 
+
+9.10
+	FragmentManager fragmentManager = getSupportFragmentManager();
+	
+9.14
+public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState ) {
+	View v = inflater.inflate(R.layout.my_fragment, container, false);
+
+}
+
+9.15
+	MyActivity activity = (MyActivity) getActivity();
