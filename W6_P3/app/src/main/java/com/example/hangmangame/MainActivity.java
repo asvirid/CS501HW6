@@ -2,6 +2,7 @@ package com.example.hangmangame;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentContainerView;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -40,65 +41,7 @@ public class MainActivity extends AppCompatActivity implements Letters.LettersLi
     private TextView wordSelected; // word selected textview
     private Button btnStartGame;
 
-    private TableLayout keyboard;
-    private TableRow qwertyuiop;
-    private TableRow asdfghjkl;
-    private TableRow zxcvbnm;
-    private Button btnQ;
-    private Button btnW;
-    private Button btnE;
-    private Button btnR;
-    private Button btnT;
-    private Button btnY;
-    private Button btnU;
-    private Button btnI;
-    private Button btnO;
-    private Button btnP;
-    private Button btnA;
-    private Button btnS;
-    private Button btnD;
-    private Button btnF;
-    private Button btnG;
-    private Button btnH;
-    private Button btnJ;
-    private Button btnK;
-    private Button btnL;
-    private Button btnZ;
-    private Button btnX;
-    private Button btnC;
-    private Button btnV;
-    private Button btnB;
-    private Button btnN;
-    private Button btnM;
-    private Button hint;
-    int btnQNum = 0;
-    int btnWNum = 1;
-    int btnENum = 2;
-    int btnRNum = 3;
-    int btnTNum = 4;
-    int btnYNum = 5;
-    int btnUNum = 6;
-    int btnINum = 7;
-    int btnONum = 8;
-    int btnPNum = 9;
-    int btnANum = 10;
-    int btnSNum = 11;
-    int btnDNum = 12;
-    int btnFNum = 13;
-    int btnGNum = 14;
-    int btnHNum = 15;
-    int btnJNum = 16;
-    int btnKNum = 17;
-    int btnLNum = 18;
-    int btnZNum = 19;
-    int btnXNum = 20;
-    int btnCNum = 21;
-    int btnVNum = 22;
-    int btnBNum = 23;
-    int btnNNum = 24;
-    int btnMNum = 25;
-    private Button[] keyboardButtons;
-    int[] keyboardButtonsUsed = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}; // list of btn visibility (0 = visible, 4 = invisible)
+    private FragmentContainerView gallowsFragmentView;
 
     int counthint = 0;
     String category;
@@ -306,7 +249,8 @@ public class MainActivity extends AppCompatActivity implements Letters.LettersLi
 
     @Override
     public char sendChar(char letter) {
-        
+        Gallows gallowsFragmentView = (Gallows) getSupportFragmentManager().findFragmentById(R.id.gallowsFragmentView);
+        return letter;
     }
 
     /*
